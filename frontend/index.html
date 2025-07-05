@@ -4,7 +4,11 @@
 	<script>
 		window.onload = function () {
 			document.getElementById('starter').innerHTML = '_(:3」∠)_';
-			document.getElementById('sm').innerHTML = '正在连接服务器...';
+			const smElement = document.getElementById('sm');
+			if (smElement.innerText.trim() === '') {
+				// 2025.7.5 WebSocket 连接有时候很快就建立了，提示信息就没必要显示正在连接了
+				smElement.innerHTML = '正在连接服务器...';
+			}
 			document.getElementById('b').style.display = 'none';
 		}
 	</script>

@@ -4,7 +4,7 @@ FROM composer AS builder
 
 WORKDIR /app
 
-RUN composer require workerman/workerman
+RUN composer require workerman/workerman:5.1.3
 
 # STAGE 2: 构建非 root 镜像
 FROM php:8.1.33-fpm-alpine
