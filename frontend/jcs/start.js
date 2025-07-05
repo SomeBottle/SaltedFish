@@ -1,0 +1,12 @@
+document.getElementById('b').style.display = 'block';
+step = 0;
+var step = 0;
+var username = '';
+var enemyname = '';
+var room = '';
+var timer;
+var turn = 0;
+clearInterval(timer);
+setaudio(musiclist[Math.floor((Math.random() * musiclist.length))]);
+console.clear();
+winflag = true;
