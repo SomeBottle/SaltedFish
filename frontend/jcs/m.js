@@ -14,7 +14,6 @@ var prepage = new Array();
 var retry = 0;
 var server = '';
 var counttime = 0;
-var audiop = new Array();
 /*初始化Server选择*/
 if (localStorage.fishserver == undefined || localStorage.fishserver == null || localStorage.fishserver == '') {
     localStorage.fishserver = defaultserver;
@@ -334,10 +333,15 @@ function setaudio(url) {/*淡出淡入变换*/
     }, 20);
 }
 function setuaudio(url) {
-    audiop[window.audionum] = document.createElement('audio');
-    audiop[window.audionum].setAttribute('autoplay', 'autoplay');
-    audiop[window.audionum].setAttribute('src', url);
-    audiop[window.audionum].play();
+    // 2025.7.10: 播放完成后自动移除元素，防止资源浪费
+    const audio = document.createElement('audio');
+    audio.setAttribute('autoplay', 'autoplay');
+    audio.setAttribute('src', url);
+    audio.play();
+
+    audio.addEventListener('ended', function () {
+        audio.remove();
+    });
     window.audionum += 1;
 }
 function log(name, rooms) {
